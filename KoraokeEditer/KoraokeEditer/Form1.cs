@@ -17,6 +17,9 @@ namespace KoraokeEditer
         Thread progressThread;
         string lyricsPath;
 
+        int nowLine = 0;
+        int nowCharAt = 0;
+
         List<string> lyrics = new List<string>();
         public Form1()
         {
@@ -58,8 +61,11 @@ namespace KoraokeEditer
         {
             pl = new Player();
             pl.SetMp3Path(EditerFileManager.nowMp3Path);
+            button1.Enabled = false;
+            button2.Enabled = false;
+
             pl.Play();
-            ThreadStart progressThreadStart = new ThreadStart(Threadtest1);
+            ThreadStart progressThreadStart = new ThreadStart(ProgressThreadFunc);
             progressThread = new Thread(progressThreadStart);
             progressThread.Start();
             progressBar1.Maximum = (int)pl.GetLength()/100;
@@ -70,7 +76,7 @@ namespace KoraokeEditer
         }
 
 
-        void Threadtest1()
+        void ProgressThreadFunc()
         {
             while (true)
             {
@@ -86,6 +92,8 @@ namespace KoraokeEditer
                     {
                         progressBar1.Value = (int)pl.GetLength() / 100;
                         pl.Stop();
+                        button1.Enabled = true;
+                        button2.Enabled = true;
                         progressThread.Abort();
                     }
                     
@@ -109,7 +117,20 @@ namespace KoraokeEditer
 
             if (e.KeyCode == Keys.Space)
             {
-                MessageBox.Show(e.KeyCode.ToString());
+                char[] temp = lyrics[nowLine].ToCharArray();
+                int tempLength = temp.Length;
+
+                label2.Text = nowCharAt+"/"+tempLength.ToString();
+
+
+                label3.Text = temp[nowCharAt].ToString();
+                nowCharAt++;
+                if(tempLength-1 < nowCharAt)
+                {
+                    nowLine++;
+                    nowCharAt = 0;
+                }
+               
             }
 
         }
