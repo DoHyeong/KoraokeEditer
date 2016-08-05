@@ -15,6 +15,9 @@ namespace KoraokeEditer
     {
         Player pl;
         Thread progressThread;
+        string lyricsPath;
+
+        List<string> lyrics = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +38,19 @@ namespace KoraokeEditer
             {
                 EditerFileManager.nowMp3Path = open.FileName;
                 this.songTitle.Text = EditerFileManager.nowMp3Path;
-                
+                string lyricsFolder= EditerFileManager.getfileFolder(open.FileName);
+                string filename = EditerFileManager.GetFileName(EditerFileManager.nowMp3Path);
+                this.lyricsPath = lyricsFolder + filename+".txt";
+
+                string line;
+                System.IO.StreamReader file = new System.IO.StreamReader(lyricsPath);
+                while((line = file.ReadLine())!= null)
+                {
+                    lyrics.Add(line);
+                }
+                file.Close();
+
+                   
             }
         }
 
@@ -48,6 +63,10 @@ namespace KoraokeEditer
             progressThread = new Thread(progressThreadStart);
             progressThread.Start();
             progressBar1.Maximum = (int)pl.GetLength()/100;
+
+            this.label1.Text = this.lyrics[0];
+            this.label2.Text = this.lyrics[1];
+
         }
 
 
@@ -57,20 +76,44 @@ namespace KoraokeEditer
             {
                 this.Invoke(new Action(delegate ()
                 {
-                        if (pl.GetLength() <= pl.GetPosition() - 80)
-                     {
+                     
+                    try
+                    {
+                        this.songTitle.Text = pl.GetPosition().ToString();
+                        this.progressBar1.Value = (int)pl.GetPosition() / 100;
+                    }
+                    catch(ArgumentOutOfRangeException exception)
+                    {
                         progressBar1.Value = (int)pl.GetLength() / 100;
+                        pl.Stop();
                         progressThread.Abort();
-
-                     }
-               
-                    this.songTitle.Text = pl.GetPosition().ToString();
-                    this.progressBar1.Value = (int)pl.GetPosition() / 100;
+                    }
+                    
 
                 }));
                 Thread.Sleep(500);
                
             }
         }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true;
+            label1.Focus();
+            
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Space)
+            {
+                MessageBox.Show(e.KeyCode.ToString());
+            }
+
+        }
+
+     
     }
 }

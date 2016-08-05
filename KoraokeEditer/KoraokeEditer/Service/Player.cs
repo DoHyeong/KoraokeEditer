@@ -12,9 +12,10 @@ namespace KoraokeEditer
     {
         Mp3FileReader reader = null;
         WaveOut waveOut = new WaveOut();
-
+        private string path;
         public void SetMp3Path(string path)
         {
+            this.path = path;
             reader = new Mp3FileReader(path);
             waveOut.Init(reader);
 
@@ -26,6 +27,11 @@ namespace KoraokeEditer
             waveOut.Init(reader);
             waveOut.Play();
             return true;
+        }
+
+        public void Stop()
+        {
+            waveOut.Stop();
         }
 
         public TimeSpan GetPlayTime()
@@ -43,6 +49,16 @@ namespace KoraokeEditer
         {
             return reader.Length;
 
+        }
+
+        public string GetSongName()
+
+        {
+            string[] pathArray = path.Split('\\');
+            int length = pathArray.Length;
+
+            string[] fileArray = pathArray[length - 1].Split('.');
+            return fileArray[0];
         }
 
 
