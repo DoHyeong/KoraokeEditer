@@ -29,12 +29,6 @@ namespace KoraokeEditer
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-     
         void ProgressThreadFunc()
         {
             while (true)
@@ -56,8 +50,6 @@ namespace KoraokeEditer
                         BtnPlay.Enabled = true;
                         progressThread.Abort();
                     }
-
-
 
                 }));
                 Thread.Sleep(500);
@@ -99,7 +91,6 @@ namespace KoraokeEditer
 
                 if(nowCharAt == 0)
                 {
-                    // xml += String.Format(lineStratFormat, nowLine);
                     xml += "[";
                 }else
                 {
@@ -121,8 +112,7 @@ namespace KoraokeEditer
                         nowCharAt++;
                     }
                     nowCharAt++;
-                    // xml += String.Format(gasaStartFormat, pl.GetPosition(), ibun);
-                    // xml += String.Format(gasaJson, pl.GetPosition(), ibun);
+              
                     xml += String.Format(gasaJson, pl.getMilli(), ibun);
                 }
                 catch(IndexOutOfRangeException exception)
@@ -155,10 +145,7 @@ namespace KoraokeEditer
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
@@ -201,15 +188,9 @@ namespace KoraokeEditer
             progressBar1.Maximum = max;
             this.progressMax.Text = max.ToString();
 
-
-            //this.label1.Text = this.lyrics[0];
             this.nowGasa.Text = this.lyrics[0];
             this.label2.Text = this.lyrics[1];
         }
 
-        private void nowGasa_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

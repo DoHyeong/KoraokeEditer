@@ -60,7 +60,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1393, 156);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // BtnOpen
             // 
@@ -212,15 +211,14 @@
             // 
             this.nowGasa.AutoSize = true;
             this.nowGasa.Depth = 0;
-            this.nowGasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nowGasa.Font = new System.Drawing.Font("Roboto", 11F);
             this.nowGasa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nowGasa.Location = new System.Drawing.Point(472, 805);
             this.nowGasa.MouseState = MaterialSkin.MouseState.HOVER;
             this.nowGasa.Name = "nowGasa";
-            this.nowGasa.Size = new System.Drawing.Size(454, 73);
+            this.nowGasa.Size = new System.Drawing.Size(214, 37);
             this.nowGasa.TabIndex = 6;
             this.nowGasa.Text = "materialLabel1";
-            this.nowGasa.Click += new System.EventHandler(this.nowGasa_Click);
             // 
             // Form1
             // 
