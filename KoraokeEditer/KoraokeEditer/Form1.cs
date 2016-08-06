@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace KoraokeEditer
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
         Player pl;
         Thread progressThread;
@@ -34,50 +34,14 @@ namespace KoraokeEditer
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Open_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "mp3File(*.mp3)|*.mp3";
-            open.Title = "plz select file";
-
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                EditerFileManager.nowMp3Path = open.FileName;
-                this.songTitle.Text = EditerFileManager.nowMp3Path;
-                string lyricsFolder = EditerFileManager.getfileFolder(open.FileName);
-                string filename = EditerFileManager.GetFileName(EditerFileManager.nowMp3Path);
-                this.lyricsPath = lyricsFolder + filename + ".txt";
-
-                string line;
-                System.IO.StreamReader file = new System.IO.StreamReader(lyricsPath);
-                while ((line = file.ReadLine()) != null)
-                {
-                    lyrics.Add(line);
-                }
-                file.Close();
-
-
-            }
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pl = new Player();
-            pl.SetMp3Path(EditerFileManager.nowMp3Path);
-            button1.Enabled = false;
-            button2.Enabled = false;
-
-            pl.Play();
-            ThreadStart progressThreadStart = new ThreadStart(ProgressThreadFunc);
-            progressThread = new Thread(progressThreadStart);
-            progressThread.Start();
-            int max = (int)pl.GetLength() / 100;
-            progressBar1.Maximum = max;
-            this.progressMax.Text = max.ToString();
-
-
-            this.label1.Text = this.lyrics[0];
-            this.label2.Text = this.lyrics[1];
+            
 
         }
 
@@ -100,8 +64,8 @@ namespace KoraokeEditer
                     {
                         progressBar1.Value = (int)pl.GetLength() / 100;
                         pl.Stop();
-                        button1.Enabled = true;
-                        button2.Enabled = true;
+                        BtnOpen.Enabled = true;
+                        BtnPlay.Enabled = true;
                         progressThread.Abort();
                     }
 
@@ -204,6 +168,52 @@ namespace KoraokeEditer
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "mp3File(*.mp3)|*.mp3";
+            open.Title = "plz select file";
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                EditerFileManager.nowMp3Path = open.FileName;
+                this.songTitle.Text = EditerFileManager.nowMp3Path;
+                string lyricsFolder = EditerFileManager.getfileFolder(open.FileName);
+                string filename = EditerFileManager.GetFileName(EditerFileManager.nowMp3Path);
+                this.lyricsPath = lyricsFolder + filename + ".txt";
+
+                string line;
+                System.IO.StreamReader file = new System.IO.StreamReader(lyricsPath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    lyrics.Add(line);
+                }
+                file.Close();
+
+
+            }
+        }
+
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            pl = new Player();
+            pl.SetMp3Path(EditerFileManager.nowMp3Path);
+            BtnOpen.Enabled = false;
+            BtnPlay.Enabled = false;
+
+            pl.Play();
+            ThreadStart progressThreadStart = new ThreadStart(ProgressThreadFunc);
+            progressThread = new Thread(progressThreadStart);
+            progressThread.Start();
+            int max = (int)pl.GetLength() / 100;
+            progressBar1.Maximum = max;
+            this.progressMax.Text = max.ToString();
+
+
+            this.label1.Text = this.lyrics[0];
+            this.label2.Text = this.lyrics[1];
         }
     }
 }

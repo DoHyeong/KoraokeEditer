@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.songTitle = new System.Windows.Forms.Label();
+            this.BtnOpen = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.songTitle = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnPlay = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.progressMax = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.progressNow = new System.Windows.Forms.Label();
+            this.nowSongPosition = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nowSongPosition = new System.Windows.Forms.Label();
-            this.progressNow = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.progressMax = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -51,48 +53,107 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.BtnOpen);
             this.groupBox1.Controls.Add(this.songTitle);
-            this.groupBox1.Location = new System.Drawing.Point(29, 39);
+            this.groupBox1.Location = new System.Drawing.Point(32, 147);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1393, 156);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button1
+            // BtnOpen
             // 
-            this.button1.Location = new System.Drawing.Point(1166, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 76);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "OPEN";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnOpen.Depth = 0;
+            this.BtnOpen.Location = new System.Drawing.Point(1149, 34);
+            this.BtnOpen.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnOpen.Name = "BtnOpen";
+            this.BtnOpen.Primary = true;
+            this.BtnOpen.Size = new System.Drawing.Size(201, 100);
+            this.BtnOpen.TabIndex = 6;
+            this.BtnOpen.Text = "Open";
+            this.BtnOpen.UseVisualStyleBackColor = true;
+            this.BtnOpen.Click += new System.EventHandler(this.BtnOpen_Click);
             // 
             // songTitle
             // 
             this.songTitle.AutoSize = true;
-            this.songTitle.Font = new System.Drawing.Font("굴림", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.songTitle.Location = new System.Drawing.Point(21, 60);
+            this.songTitle.Depth = 0;
+            this.songTitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.songTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.songTitle.Location = new System.Drawing.Point(31, 67);
+            this.songTitle.MouseState = MaterialSkin.MouseState.HOVER;
             this.songTitle.Name = "songTitle";
-            this.songTitle.Size = new System.Drawing.Size(388, 43);
-            this.songTitle.TabIndex = 0;
-            this.songTitle.Text = "Open .mp3 file plz";
+            this.songTitle.Size = new System.Drawing.Size(250, 37);
+            this.songTitle.TabIndex = 6;
+            this.songTitle.Text = "Plz Open mp3 file";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BtnPlay);
             this.groupBox2.Controls.Add(this.progressMax);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.progressNow);
             this.groupBox2.Controls.Add(this.nowSongPosition);
             this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Location = new System.Drawing.Point(29, 213);
+            this.groupBox2.Location = new System.Drawing.Point(32, 321);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1393, 211);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // BtnPlay
+            // 
+            this.BtnPlay.Depth = 0;
+            this.BtnPlay.Location = new System.Drawing.Point(1149, 34);
+            this.BtnPlay.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnPlay.Name = "BtnPlay";
+            this.BtnPlay.Primary = true;
+            this.BtnPlay.Size = new System.Drawing.Size(201, 100);
+            this.BtnPlay.TabIndex = 7;
+            this.BtnPlay.Text = "Play";
+            this.BtnPlay.UseVisualStyleBackColor = true;
+            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            // 
+            // progressMax
+            // 
+            this.progressMax.AutoSize = true;
+            this.progressMax.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.progressMax.Location = new System.Drawing.Point(1042, 126);
+            this.progressMax.Name = "progressMax";
+            this.progressMax.Size = new System.Drawing.Size(30, 29);
+            this.progressMax.TabIndex = 6;
+            this.progressMax.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(949, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 29);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "/";
+            // 
+            // progressNow
+            // 
+            this.progressNow.AutoSize = true;
+            this.progressNow.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.progressNow.Location = new System.Drawing.Point(864, 126);
+            this.progressNow.Name = "progressNow";
+            this.progressNow.Size = new System.Drawing.Size(30, 29);
+            this.progressNow.TabIndex = 4;
+            this.progressNow.Text = "0";
+            // 
+            // nowSongPosition
+            // 
+            this.nowSongPosition.AutoSize = true;
+            this.nowSongPosition.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.nowSongPosition.Location = new System.Drawing.Point(31, 126);
+            this.nowSongPosition.Name = "nowSongPosition";
+            this.nowSongPosition.Size = new System.Drawing.Size(30, 29);
+            this.nowSongPosition.TabIndex = 3;
+            this.nowSongPosition.Text = "0";
             // 
             // progressBar1
             // 
@@ -101,21 +162,11 @@
             this.progressBar1.Size = new System.Drawing.Size(1096, 51);
             this.progressBar1.TabIndex = 2;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(1149, 47);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 76);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "PLAY";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(585, 755);
+            this.label1.Location = new System.Drawing.Point(585, 799);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 48);
             this.label1.TabIndex = 2;
@@ -135,7 +186,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(517, 464);
+            this.groupBox3.Location = new System.Drawing.Point(550, 583);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(298, 213);
             this.groupBox3.TabIndex = 4;
@@ -152,55 +203,21 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "rk";
             // 
-            // nowSongPosition
-            // 
-            this.nowSongPosition.AutoSize = true;
-            this.nowSongPosition.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.nowSongPosition.Location = new System.Drawing.Point(31, 126);
-            this.nowSongPosition.Name = "nowSongPosition";
-            this.nowSongPosition.Size = new System.Drawing.Size(30, 29);
-            this.nowSongPosition.TabIndex = 3;
-            this.nowSongPosition.Text = "0";
-            // 
-            // progressNow
-            // 
-            this.progressNow.AutoSize = true;
-            this.progressNow.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.progressNow.Location = new System.Drawing.Point(864, 148);
-            this.progressNow.Name = "progressNow";
-            this.progressNow.Size = new System.Drawing.Size(30, 29);
-            this.progressNow.TabIndex = 4;
-            this.progressNow.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(974, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 29);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "/";
-            // 
-            // progressMax
-            // 
-            this.progressMax.AutoSize = true;
-            this.progressMax.Font = new System.Drawing.Font("굴림", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.progressMax.Location = new System.Drawing.Point(1042, 148);
-            this.progressMax.Name = "progressMax";
-            this.progressMax.Size = new System.Drawing.Size(30, 29);
-            this.progressMax.TabIndex = 6;
-            this.progressMax.Text = "0";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(39, 464);
+            this.groupBox4.Location = new System.Drawing.Point(41, 634);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(275, 213);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -232,10 +249,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label songTitle;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -246,6 +260,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label progressNow;
         private System.Windows.Forms.GroupBox groupBox4;
+        private MaterialSkin.Controls.MaterialLabel songTitle;
+        private MaterialSkin.Controls.MaterialRaisedButton BtnOpen;
+        private MaterialSkin.Controls.MaterialRaisedButton BtnPlay;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
