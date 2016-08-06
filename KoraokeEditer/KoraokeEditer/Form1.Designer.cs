@@ -39,12 +39,12 @@
             this.progressNow = new System.Windows.Forms.Label();
             this.nowSongPosition = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nowGasa = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -162,22 +162,11 @@
             this.progressBar1.Size = new System.Drawing.Size(1096, 51);
             this.progressBar1.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(585, 799);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 48);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(21, 31);
+            this.label2.Location = new System.Drawing.Point(54, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 48);
             this.label2.TabIndex = 3;
@@ -186,12 +175,12 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(550, 583);
+            this.groupBox3.Location = new System.Drawing.Point(521, 548);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(298, 213);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "NowText";
             // 
             // label3
             // 
@@ -199,34 +188,48 @@
             this.label3.Font = new System.Drawing.Font("굴림", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(59, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 128);
+            this.label3.Size = new System.Drawing.Size(183, 128);
             this.label3.TabIndex = 0;
-            this.label3.Text = "rk";
+            this.label3.Text = "가";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(41, 634);
+            this.groupBox4.Location = new System.Drawing.Point(68, 548);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(275, 213);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
+            this.groupBox4.Text = "NowIndex";
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(86, 4);
+            // 
+            // nowGasa
+            // 
+            this.nowGasa.AutoSize = true;
+            this.nowGasa.Depth = 0;
+            this.nowGasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nowGasa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nowGasa.Location = new System.Drawing.Point(472, 805);
+            this.nowGasa.MouseState = MaterialSkin.MouseState.HOVER;
+            this.nowGasa.Name = "nowGasa";
+            this.nowGasa.Size = new System.Drawing.Size(454, 73);
+            this.nowGasa.TabIndex = 6;
+            this.nowGasa.Text = "materialLabel1";
+            this.nowGasa.Click += new System.EventHandler(this.nowGasa_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1457, 920);
+            this.Controls.Add(this.nowGasa);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -251,7 +254,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label3;
@@ -264,6 +266,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton BtnOpen;
         private MaterialSkin.Controls.MaterialRaisedButton BtnPlay;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private MaterialSkin.Controls.MaterialLabel nowGasa;
     }
 }
 

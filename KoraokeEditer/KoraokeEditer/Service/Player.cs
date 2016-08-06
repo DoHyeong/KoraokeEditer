@@ -40,6 +40,12 @@ namespace KoraokeEditer
            
         }
 
+        public double getMilli()
+        {
+            TimeSpan temp = GetPlayTime();
+            return temp.TotalSeconds*1000;
+        }
+
         public long GetPosition()
         {
             return waveOut.GetPosition();

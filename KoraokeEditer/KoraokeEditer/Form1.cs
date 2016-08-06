@@ -41,10 +41,9 @@ namespace KoraokeEditer
             {
                 this.Invoke(new Action(delegate ()
                 {
-
                     try
                     {
-                        this.nowSongPosition.Text = pl.GetPosition().ToString();
+                        this.nowSongPosition.Text = pl.getMilli().ToString();
                         int now = (int)pl.GetPosition() / 100;
                         this.progressBar1.Value = now;
                         this.progressNow.Text = now.ToString();
@@ -70,8 +69,7 @@ namespace KoraokeEditer
         private void Form1_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
-            label1.Focus();
-
+            nowGasa.Focus();
         }
 
         //string lineStratFormat = "<line number=\"{0}\">";
@@ -91,6 +89,8 @@ namespace KoraokeEditer
 
             if (e.KeyCode == Keys.Space && endLyrics == false)
             {
+                e.Handled = true; //This will prevent the "ding" sound
+
                 ibun = null;
                 
                
@@ -107,7 +107,7 @@ namespace KoraokeEditer
                 }
 
 
-                label2.Text = nowCharAt+"/"+tempLength.ToString();
+                label2.Text = (nowCharAt+1)+"/"+tempLength.ToString();
 
                 try
                 {
@@ -121,9 +121,9 @@ namespace KoraokeEditer
                         nowCharAt++;
                     }
                     nowCharAt++;
-
                     // xml += String.Format(gasaStartFormat, pl.GetPosition(), ibun);
-                    xml += String.Format(gasaJson, pl.GetPosition(), ibun);
+                    // xml += String.Format(gasaJson, pl.GetPosition(), ibun);
+                    xml += String.Format(gasaJson, pl.getMilli(), ibun);
                 }
                 catch(IndexOutOfRangeException exception)
                 {
@@ -135,6 +135,7 @@ namespace KoraokeEditer
                     // xml += lineEndFormat;
                     xml += "]";
                     nowLine++;
+                    nowGasa.Text = lyrics[nowLine];
                     nowCharAt = 0;
 
                     if (!(nowLine > lyrics.Count - 1))
@@ -201,8 +202,14 @@ namespace KoraokeEditer
             this.progressMax.Text = max.ToString();
 
 
-            this.label1.Text = this.lyrics[0];
+            //this.label1.Text = this.lyrics[0];
+            this.nowGasa.Text = this.lyrics[0];
             this.label2.Text = this.lyrics[1];
+        }
+
+        private void nowGasa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
